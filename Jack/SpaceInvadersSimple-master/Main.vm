@@ -1,0 +1,11 @@
+function Main.main 1
+call SpaceGame.new 0
+pop local 0
+push local 0
+call SpaceGame.run 1
+pop temp 0
+push local 0
+call SpaceGame.dispose 1
+pop temp 0
+push constant 0
+return

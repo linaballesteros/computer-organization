@@ -1,0 +1,83 @@
+class Figura {
+    field int x, y;
+    field int size;
+    field Dona avatar;
+
+    constructor Figura new(int Ax, int Ay, int Asize) {
+        let x = Ax;
+        let y = Ay;
+        let size = Asize;
+        let avatar = Dona.new(x, y, size, size - 5);
+        do draw();
+        return this;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void draw() {
+        //do Screen.setColor(true);
+        //do Screen.drawRectangle(x, y, x + size, y + size);
+        do avatar.draw(x, y, size);
+        return;
+    }
+
+    method void borrar() {
+        //do Screen.setColor(false);
+        //do Screen.drawRectangle(x, y, x + size, y + size);
+        do avatar.borrar();
+        return;
+    }
+
+    method void zoomAumentar() {
+        if (((y + size) < 254) & ((x + size) < 510)) {
+            do borrar();
+            let size = size + 2;
+            do draw();
+        }
+        return;
+    }
+
+    method void zoomDisminuir() {
+        if (size > 2) {
+            do borrar();
+            let size = size -2;
+            do draw();
+        }
+        return;
+    }
+
+    method void moveArriba() {
+        if (y > 1){
+            let y = y - 1;
+            do avatar.draw(x, y, size);
+        }
+        return;
+    }
+
+    method void moveAbajo() {
+        if ((y + size) < 254){
+            let y = y + 1;
+            do avatar.draw(x, y, size);
+        }
+        return;
+    }
+
+    method void moveIzq() {
+        if (y > 1){
+            let x = x - 1;
+            do avatar.draw(x, y, size);
+        }
+        return;
+    }
+
+    method void moveDer() {
+        if ((x + size) < 510){
+            let x = x + 1;
+            do avatar.draw(x, y, size);
+        }
+        return;
+    }
+}

@@ -1,0 +1,28 @@
+// multiplicacion 
+// push argument 0
+push constant 0 
+pop local 0 // res = 0
+
+push argument 0 // cargar base
+pop local 1 // base = A
+
+push argument 1
+pop local 2 // multiplicador = B
+
+label CICLO
+push local 0 // cargo res
+push local 1 // cargo A
+add // res = res + A
+pop local 0
+
+
+// control de la iteracion
+push local 2
+push constant 1
+sub 
+pop local 2
+
+push local 2
+if-goto CICLO // goto siempre compara con el ultimo elemento del stack, revisa si es 0 o no
+push local 0 // es el resultado
+// 5 * 3 = 15

@@ -1,0 +1,31 @@
+CHIP ALU {
+    IN x[16], y[16], zx, nx, zy, ny, f, no;
+    OUT out[16];
+
+    PARTS:
+    // Selecciona entre x y false (todos los bits en 0) dependiendo de la señal zx
+    Mux16(a=x, b=false, sel=zx, out=xZX);
+    // Niega cada bit en xZX
+    Not16(in=xZX, out=NotxZX);
+    // Selecciona entre xZX y su negación dependiendo de la señal nx
+    Mux16(a=xZX, b=NotxZX, sel=nx, out=xZXNX);
+
+    // Selecciona entre y y false dependiendo de la señal zy
+    Mux16(a=y, b=false, sel=zy, out=yZY);
+    // Niega cada bit en yZY
+    Not16(in=yZY, out=NotyZY);
+    // Selecciona entre yZY y su negación dependiendo de la señal ny
+    Mux16(a=yZY, b=NotyZY, sel=ny, out=yZYNY);
+
+    // Realiza una operación AND bit a bit entre xZXNX y yZYNY
+    And16(a=xZXNX, b=yZYNY, out=zANDy);
+    // Realiza una suma de 16 bits entre xZXNX y yZYNY
+    Add16(a=xZXNX, b=yZYNY, out=xADDy); 
+
+    // Selecciona entre zANDy y xADDy dependiendo de la señal f
+    Mux16(a=zANDy, b=xADDy, sel=f, out=fOut); 
+    // Niega cada bit en fOut
+    Not16(in=fOut, out=NotfOut);
+    // Selecciona entre fOut y su negación dependiendo de la señal no, y almacena el resultado en out
+    Mux16(a=fOut, b=NotfOut, sel=no, out=out);
+}

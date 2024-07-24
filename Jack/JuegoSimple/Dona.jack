@@ -1,0 +1,38 @@
+class Dona {
+    field int x, y;
+    field int r1, r2;
+
+    constructor Dona new(int px, int py, int rext, int rint) {
+        let x = px;
+        let y = py;
+        let r1 = rext;
+        let r2 = rint;
+        do draw(x, y, r1);
+        return this;
+    }
+ 
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    //dibuja un anillo
+    method void draw(int xx, int yy, int rr){
+        do borrar();
+        let x = xx;
+        let y = yy;
+        let r1 = rr;
+        let r2 = rr - 5;
+        do Screen.setColor(1);
+        do Screen.drawCircle(x, y, r1);
+        do Screen.setColor(0);
+        do Screen.drawCircle(x, y, r2);
+        return;
+    }
+
+    method void borrar(){
+        do Screen.setColor(false);
+        do Screen.drawCircle(x, y, r1);
+        return;
+    }
+}

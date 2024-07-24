@@ -1,0 +1,15 @@
+
+function Class1.set 0
+    push argument 0
+    pop static 0
+    push argument 1
+    pop static 1
+    push constant 0
+    return
+
+// retorna la resta de los atributos static[0] - static[1]
+function Class1.get 0
+    push static 0
+    push static 1
+    add 
+    return

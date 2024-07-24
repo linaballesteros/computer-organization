@@ -1,0 +1,22 @@
+CHIP ALU {
+    IN x[16], y[16], zx, nx, zy, ny, f, no;
+    OUT out[16];
+    INOUT carry;  // Puerto de salida adicional para el transporte de acarreo
+
+    PARTS:
+
+    Mux16(a=x, b=false, sel=zx, out=xZX);
+    Not16(in=xZX, out=NotxZX);
+    Mux16(a=xZX, b=NotxZX, sel=nx, out=xZXNX);
+    Mux16(a=y, b=false, sel=zy, out=yZY);
+    Not16(in=yZY, out=NotyZY);
+    Mux16(a=yZY, b=NotyZY, sel=ny, out=yZYNY);
+    And16(a=xZXNX, b=yZYNY, out=zANDy);
+    Add16(a=xZXNX, b=yZYNY, out=xADDy);
+    Mux16(a=zANDy, b=xADDy, sel=f, out=fOut);
+    Not16(in=fOut, out=NotfOut);
+    Mux16(a=fOut, b=NotfOut, sel=no, out=out);
+
+    // Conectar el transporte de acarreo
+    Or16Way16(in=out, out=carry);
+}

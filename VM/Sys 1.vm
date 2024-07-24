@@ -1,0 +1,5 @@
+function Sys.init 0
+    push constant 14
+    call Main.fibonacci 1   // Computar el elemento 4 de la serie de fibonacci
+label TERMINAR
+    goto TERMINAR              // ciclo terminar infinito

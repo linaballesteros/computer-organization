@@ -1,0 +1,40 @@
+// division x/y
+push argument 0 // x
+pop local 0     // base x
+
+push argument 1 // y
+pop local 1     // substractor y
+
+// cociente en 0
+push constant 0
+pop local 2
+
+// resta de y de x
+push local 1
+push local 0
+sub
+pop local 1
+
+label CICLO
+// comprobar si  x > y
+push local 0
+push local 1
+gt
+// Si x < y, salimos del bucle
+if-goto TERMINAR
+
+
+
+// sumar contador
+push local 2
+push constant 1
+add
+pop local 2
+
+goto CICLO // nueva iteracion
+// bucle CICLO
+label TERMINAR 
+
+push local 2 // resultado
+
+

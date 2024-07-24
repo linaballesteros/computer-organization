@@ -1,0 +1,9 @@
+push constant 15
+push constant 5 // si 15 es mayor a 5, me saca -1 porque es verdadero
+gt
+if-goto true // si es verdadero me pone 10 si es falso me pone 5
+push constant 5
+
+label true // si es verdadero 
+push constant 10 // 
+// if goto es condición ogoto solo salta siempre

@@ -1,0 +1,72 @@
+class JuegoFigura {
+    field Figura figura;
+    field int direccion;
+
+    constructor JuegoFigura new() {
+        let figura = Figura.new(10, 10, 10);
+        let direccion = 0;
+        return this;
+    }
+
+    method void dispose() {
+        do figura.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void moverFigura() {
+        if (direccion = 1) {
+            do figura.moveArriba();
+        }
+        if (direccion = 2) {
+            do figura.moveAbajo();
+        }
+        if (direccion = 3) {
+            do figura.moveIzq();
+        }
+        if (direccion = 4) {
+            do figura.moveDer();
+        }
+        do Sys.wait(5);  //espera 5 seg
+        return;
+    }
+
+    method void run() {
+        var char tecla;
+        var boolean exit;
+        let exit = false;
+        
+        while (~exit){
+            while (tecla = 0) {
+                let tecla = Keyboard.keyPressed();
+            }
+            if (tecla = 81) {  //letra Q  QUIT
+                let exit = true;
+            }
+            if (tecla = 90) {  //letra z +ZOOM
+                do figura.zoomAumentar();
+            }
+            if (tecla = 88) {  //letra x -ZOOM 
+                do figura.zoomDisminuir();
+            }
+            if (tecla = 131) {  //letra up
+                let direccion = 1;
+            }
+            if (tecla = 133) {  //letra down
+                let direccion = 2;
+            }
+            if (tecla = 130) {  //letra left
+                let direccion = 3;
+            }
+            if (tecla = 132) {  //letra right
+                let direccion = 4;
+            }
+
+            while (~(tecla = 0)) {
+                let tecla = Keyboard.keyPressed();
+                do moverFigura();
+            }
+        }
+        return;
+    }
+}

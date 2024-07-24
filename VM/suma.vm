@@ -1,0 +1,24 @@
+//if-goto
+// realizar un programa de sumatoria de i, desde i=n hasta 0
+// 1 + 2 +3
+
+push constant 0
+pop local 0 // suma = 0
+
+label CICLO 
+
+push argument 0 // f(n) = ....
+push local 0
+add 
+
+
+pop local 0 // suma = suma + acumulador
+push argument 0
+push constant 1
+sub  // contador-- 
+
+pop argument 0 // lo guardo y como lo saque del stack lo vuelvo a meter
+push argument 0
+if-goto CICLO // if contador > 0, then "otra iteracion"
+push local 0
+// el resultado es 6

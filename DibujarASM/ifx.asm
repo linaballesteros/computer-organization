@@ -1,0 +1,16 @@
+@3
+D=A 
+
+@MULTIPLICADOR // RAM
+M=D 
+
+@7
+D=A 
+
+@X
+M=D 
+
+@MULTIPLICADOR
+
+
+(PASOA) // ROM

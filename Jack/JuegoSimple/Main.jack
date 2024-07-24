@@ -1,0 +1,9 @@
+class Main {
+    function void main() {
+        var JuegoFigura game;
+        let game = JuegoFigura.new();
+        do game.run();
+        do game.dispose();
+        return;
+    }
+}

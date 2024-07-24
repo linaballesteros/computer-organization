@@ -1,0 +1,11 @@
+CHIP Bit{
+    IN in, load;
+    OUT out;
+
+    PARTS:
+    Mux(a=data, b=in, sel=load, out=MuxOut); // le digo si voy a leer o a escribir
+    DFF(in=MuxOut, out=data, out=out); // cuando lo simulamos y ponemos 0 en el in y 0 en el load, 
+
+
+
+}

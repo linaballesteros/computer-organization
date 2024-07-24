@@ -1,0 +1,94 @@
+
+class Enemy {
+	field int x, y, size, isDead;
+	field int direction; // 1 - right, 2 - left
+	
+	
+	constructor Enemy new(int startx, int starty, int startsize) {
+		let size = startsize;
+		let x = startx;
+		let y = starty;
+		let direction = 1;
+		let isDead = 0;
+		do draw();
+		return this;
+	}
+	
+	method void draw() {
+		do Screen.setColor(true);
+		do Screen.drawRectangle(x, y, x+size, y+size);
+		return;
+	}
+	
+	method void dispose() {
+		let isDead = 1;
+		do Screen.setColor(false);
+	    do Screen.drawRectangle(x, y, x + size, y + size);
+	    let x = 500;
+	    let y = 245;
+	    do Screen.setColor(true);
+        return;
+	}
+
+	method int getX() {
+		return x;
+	}
+	method int getY() {
+		return y;
+	}
+	
+	method int getIsDead() {
+		return isDead;
+	}
+	
+	method int getDirection() {
+		return direction;
+	}
+	
+	method void changeDirection() {
+		if (direction = 1) {
+			let direction = 2;
+		}
+		else {
+			let direction = 1;
+		}
+		return;
+	}
+	
+	method void moveX() {
+		if (isDead = 0) {
+			do Screen.setColor(false);
+			do Screen.drawRectangle(x, y, x + size, y + size);
+			let x = x + 10;
+			do Screen.setColor(true);
+			do Screen.drawRectangle(x, y, x+size, y+size);
+		}
+		return;
+	}
+
+	
+	method void moveY() {
+		if (isDead = 0) {
+			do Screen.setColor(false);
+		  do Screen.drawRectangle(x, y, x + size, y + size);
+			let y = y + 10;
+			do Screen.setColor(true);
+			do Screen.drawRectangle(x, y, x+size, y+size);
+			
+		}
+		return;
+	}
+	
+	method void moveXNeg() {
+		if (isDead = 0) {
+			do Screen.setColor(false);
+		  do Screen.drawRectangle(x, y, x + size, y + size);
+			let x = x - 10;
+			do Screen.setColor(true);
+			do Screen.drawRectangle(x, y, x+size, y+size);
+		
+		}
+		return;
+	}
+
+}

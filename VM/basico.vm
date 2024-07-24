@@ -1,0 +1,16 @@
+push constant 38
+pop static 0 // push local o push static
+push static 0 
+pop local 0 // asi me va a quedar tanto en la static como en la local
+
+// hacer suma
+push constant 321
+pop local 0
+push constant 157
+pop local 1
+
+push local 0
+push local 1
+add
+pop local 2
+

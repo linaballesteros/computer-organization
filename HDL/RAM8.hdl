@@ -1,0 +1,18 @@
+CHIP RAM8{
+    IN in[16], load, address[3]; // load es si quiero leer o escribir de un bit
+    OUT out[16];
+
+    PARTS:
+    DMux8Way(in=in, sel=address, a=ra, b=rb, c=rc, d=rd, e=re, f=rf, g=rg, h=rh);
+    Register(in=in, load=ra, out=outA)
+    Register(in=in, load=rb, out=outB)
+    Register(in=in, load=rc, out=outC)
+    Register(in=in, load=rd, out=outD)
+    Register(in=in, load=re, out=outE)
+    Register(in=in, load=rf, out=outF)
+    Register(in=in, load=rg, out=outG)
+    Register(in=in, load=rh, out=outH)
+    Mux8Way16(a=outA, b=outB, c=outC, d=outD, e=outE, f=outF, g=outG, h=outH, sel=sel, out=out);
+
+
+}

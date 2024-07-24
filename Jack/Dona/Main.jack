@@ -1,0 +1,13 @@
+class Main {
+    function void main(){
+        var Dona figura;
+        var Dona figura2;
+        
+        do Output.moveCursor(10,15);
+        do Output.printString("Programa que dibuja dos donas usado objetos.");
+
+        let figura = Dona.new(105, 50, 20, 10);
+        let figura2 = Dona.new(140, 60, 20, 10);
+        return;
+    }
+}

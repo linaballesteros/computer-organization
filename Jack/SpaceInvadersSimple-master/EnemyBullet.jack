@@ -1,0 +1,53 @@
+
+class EnemyBullet {
+	
+	field int x, y, size;
+	
+	constructor EnemyBullet new (int startX) {
+		let x = startX;
+		let y = 50;
+		let size = 4;
+		
+		return this;
+	}
+	
+	
+	method void dispose() {
+		do Screen.setColor(false);
+	    do Screen.drawRectangle(x, y, x + size, y + size);
+	    let x = 500;
+	    let y = 245;
+	    do Screen.setColor(true);
+        return;
+	}
+	
+	
+	method int getY() {
+		return y;
+	}
+	
+	method int getX() {
+		return x;
+	}
+
+	method void draw(int isTrue) {
+		if (isTrue = 1) {
+		    do Screen.setColor(true);
+		}
+		else {
+			do Screen.setColor(false);
+		}
+		
+		if ((x > 0) & (y > 0) & ((x+size) < 510) & ((y+size) < 253)) {
+			do Screen.drawRectangle(x, y, x + size, y + size);
+		}
+   return;
+  }
+	
+	 method void fire() {
+			do draw(0);
+      let y = y + 2;
+			do draw(1);
+      return;
+    }
+}
